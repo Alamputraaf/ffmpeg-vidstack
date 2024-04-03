@@ -21,5 +21,10 @@ Percobaan 2 dengan chatgpt dan reddit
 Reddit (https://www.reddit.com/r/ffmpeg/comments/nsyjr8/precompiled_nvidia_enabled_ffmpeg_for_windows/)
 ffmpeg -vsync 0 -hwaccel cuda -hwaccel_output_format cuda -i input.mp4 -c:a copy -c:v hevc_nvenc -preset slow output.mp4
 
+Credits:
+https://github.com/georgmartius/vid.stab
+
+Thanks to FOSS FFmpeg
+https://ffmpeg.org/
 
 
