@@ -4,6 +4,9 @@ For demo combination unstable video and stable video
 kombinasi 2 video dgn ffmpeg nvidia
 .\ffmpeg.exe -hwaccel cuda -i garden.mp4 -i garden_rendered.mp4 -filter_complex hstack -c:v hevc_nvenc -b:v 20M -maxrate 24M -bufsize 24M -preset slow -crf 14 -c:a copy comb_garden.mp4
 
+Comb dengan filter black kiri dan kanan dan video 1 dan video 2 atas bawah
+.\ffmpeg.exe -hwaccel cuda -i garden.mp4 -i garden_rendered.mp4 -filter_complex "[0:v]pad=iw:ih+20:0:10:black[top];[1:v]pad=iw:ih+20:0:10:black[bottom];[top][bottom]vstack=inputs=2[stacked];[0:a][1:a]amerge=inputs=2[a]" -map "[stacked]" -map "[a]" -c:v hevc_nvenc -b:v 20M -maxrate 24M -bufsize 24M -preset slow -crf 14 -c:a aac -shortest comb_garden_black.mp4
+
 
 
 Command pertama untuk scanning shaky video (video yang terlalu banyak gempanya) dengan ffmpeg
